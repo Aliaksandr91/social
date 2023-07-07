@@ -4,9 +4,8 @@ import {Post} from "./Post/Post";
 export const MyPosts = () => {
     return(
         <div>My posts
-            <Post/>
-            <Post/>
-            <Post/>
+            <Post message='Hi, how are you?'/>
+            <Post message='Hello, my first post?'/>
         </div>
     )
 }
