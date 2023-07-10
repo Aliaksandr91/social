@@ -1,7 +1,8 @@
 import React from "react";
 import classes from './Post.module.css'
 type PropsType ={
-    message: string
+    message: string,
+    likesCount: number
 }
 export const Post = (props:PropsType) => {
 
@@ -10,7 +11,7 @@ export const Post = (props:PropsType) => {
                 <img src="https://cdn-icons-png.flaticon.com/512/0/93.png" alt=""/>
                 {props.message}
                 <div>
-                    <span>like</span>
+                    <span>like {props.likesCount}</span>
                 </div>
             </div>
     )
