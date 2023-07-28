@@ -12,6 +12,7 @@ export const MyPosts = () => {
         {id: 1, message: 'Hi, how are you?', likesCount: 12},
         {id: 2, message: 'Hello, my first post?', likesCount: 11}
     ]
+    let postsElements = postData.map(el=><Post message={el.message} likesCount={el.likesCount}/>)
     return (
         <div className={classes.postsBlock}>
             <h3>My posts</h3>
@@ -22,8 +23,7 @@ export const MyPosts = () => {
                 <button>Add post</button>
             </div>
             <div className={classes.posts}>
-                <Post message='Hi, how are you?' likesCount={0}/>
-                <Post message='Hello, my first post?' likesCount={22}/>
+                {postsElements}
             </div>
         </div>
     )
