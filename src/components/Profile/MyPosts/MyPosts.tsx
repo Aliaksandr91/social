@@ -1,16 +1,12 @@
 import React from "react";
-import classes from './MyPosts.module.css'
-import {Post} from "./Post/Post";
+import classes from './MyPosts.module.css';
+import { Post } from "./Post/Post";
+import {MyPostsProps, PostData} from "../../../index";
 
-
-
-export const MyPosts = (props:any) => {
-    debugger
-    // let postData = [
-    //     {id: 1, message: 'Hi, how are you?', likesCount: 12},
-    //     {id: 2, message: 'Hello, my first post?', likesCount: 11}
-    // ]
-    let postsElements = props.postData.map((el)=><Post message={el.message} likesCount={el.likesCount}/>)
+export const MyPosts = (props:MyPostsProps) => {
+    let postsElements = props.postData.map((el: PostData) => (
+        <Post message={el.message} likesCount={el.likesCount} />
+    ));
     return (
         <div className={classes.postsBlock}>
             <h3>My posts</h3>
@@ -25,4 +21,4 @@ export const MyPosts = (props:any) => {
             </div>
         </div>
     )
-}
+};
