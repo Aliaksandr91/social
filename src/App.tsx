@@ -11,7 +11,7 @@ import {Settings} from "./components/Settings/Settings";
 import {MyPostsProps} from "./index";
 
 
-function App(props:MyPostsProps) {
+function App(props: any) {
     debugger
     return (
         <BrowserRouter>
@@ -21,7 +21,13 @@ function App(props:MyPostsProps) {
                 <div className='app-wrapper-content'>
                     <Routes>
                         <Route path="/profile" element={<Profile postData={props.postData}/>}/>
-                        <Route path="/dialogs/*" element={<Dialogs/>}/>
+                        <Route path="/dialogs/*"
+                               element={
+                                   <Dialogs dialogsData={props.dialogsData}
+                                            messageData={props.messageData}
+                                   />
+                               }
+                        />
                         <Route path="/news" element={<News/>}/>
                         <Route path="/music" element={<Music/>}/>
                         <Route path="/settings" element={<Settings/>}/>
