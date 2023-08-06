@@ -3,7 +3,7 @@ import classes from "./Dialogs.module.css";
 import {NavLink} from "react-router-dom";
 import {DialogItem} from "./DialogItem/DialogsItem";
 import {Message} from "./Message/Message";
-import {DialogsDataType, MessageDataType} from "../../index";
+import {DialogsDataType, MessageDataType} from "../../redux/state";
 
 export const Dialogs = (props:any) => {
 

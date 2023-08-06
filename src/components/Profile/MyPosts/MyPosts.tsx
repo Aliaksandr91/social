@@ -1,7 +1,7 @@
 import React from "react";
 import classes from './MyPosts.module.css';
 import { Post } from "./Post/Post";
-import {MyPostsProps, PostData} from "../../../index";
+import {MyPostsProps, PostData} from "../../../redux/state";
 
 export const MyPosts = (props:MyPostsProps) => {
     let postsElements = props.postData.map((el: PostData) => (

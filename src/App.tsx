@@ -8,7 +8,6 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
-import {MyPostsProps} from "./index";
 
 
 function App(props: any) {
@@ -20,11 +19,11 @@ function App(props: any) {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path="/profile" element={<Profile postData={props.postData}/>}/>
+                        <Route path="/profile" element={<Profile postData={props.state.postData}/>}/>
                         <Route path="/dialogs/*"
                                element={
-                                   <Dialogs dialogsData={props.dialogsData}
-                                            messageData={props.messageData}
+                                   <Dialogs dialogsData={props.state.dialogsData}
+                                            messageData={props.state.messageData}
                                    />
                                }
                         />
