@@ -44,3 +44,12 @@ export let state: StateType = {
         {id: 2, message: 'Hello, my first post?', likesCount: 11}
     ]
 }
+
+export const addPost = (postMessage:any)=> {
+    let newPost = {id: 5, message: postMessage, likesCount: 0}
+    state.postData.push(newPost)
+    // return (
+    //     {...state, postData: [...state.postData, newPost]}
+    // )
+
+}

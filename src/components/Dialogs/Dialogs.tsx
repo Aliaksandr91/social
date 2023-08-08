@@ -7,12 +7,12 @@ import {DialogsDataType, MessageDataType} from "../../redux/state";
 
 export const Dialogs = (props:any) => {
 
-    let newMessageElement = useRef<HTMLTextAreaElement>(null)
-    const addMessage = () => {
-        if (newMessageElement.current !== null) {
-            alert(newMessageElement.current.value)
-        }
-    }
+    // let newMessageElement = useRef<HTMLTextAreaElement>(null)
+    // const addMessage = () => {
+    //     if (newMessageElement.current !== null) {
+    //         alert(newMessageElement.current.value)
+    //     }
+    // }
 
 let dialogsElements = props.dialogsData.map((el:DialogsDataType)=> <DialogItem name={el.name} id={el.id}/>);
 let messageElements = props.messageData.map((el:MessageDataType)=> <Message message={el.message} id={el.id}/>);
@@ -24,10 +24,10 @@ let messageElements = props.messageData.map((el:MessageDataType)=> <Message mess
             <div className={classes.messages}>
                 {messageElements}
             </div>
-           <div>
-               <textarea ref={newMessageElement}></textarea>
-           </div>
-            <div><button onClick={addMessage}>Add message</button></div>
+           {/*<div>*/}
+           {/*    <textarea ref={newMessageElement}></textarea>*/}
+           {/*</div>*/}
+           {/* <div><button onClick={addMessage}>Add message</button></div>*/}
         </div>
     )
 }

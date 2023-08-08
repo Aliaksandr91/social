@@ -4,11 +4,11 @@ import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsProps} from "../../redux/state";
 
-export const Profile = (props:MyPostsProps) => {
+export const Profile = (props:any) => {
     return (
         <div className={classes.content}>
             <ProfileInfo/>
-            <MyPosts postData={props.postData}/>
+            <MyPosts postData={props.postData} addPost={props.addPost}/>
         </div>
     )
 }

@@ -10,8 +10,8 @@ import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 
 
+
 function App(props: any) {
-    debugger
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -19,7 +19,7 @@ function App(props: any) {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path="/profile" element={<Profile postData={props.state.postData}/>}/>
+                        <Route path="/profile" element={<Profile postData={props.state.postData} addPost={props.addPost}/>}/>
                         <Route path="/dialogs/*"
                                element={
                                    <Dialogs dialogsData={props.state.dialogsData}

@@ -3,14 +3,14 @@ import classes from './MyPosts.module.css';
 import { Post } from "./Post/Post";
 import {MyPostsProps, PostData} from "../../../redux/state";
 
-export const MyPosts = (props:MyPostsProps) => {
+export const MyPosts = (props:any) => {
     let postsElements = props.postData.map((el: PostData) => (
         <Post message={el.message} likesCount={el.likesCount} />
     ));
     let newPostElement = useRef<HTMLTextAreaElement>(null)
     const addPost = () => {
         if (newPostElement.current !== null) {
-            alert(newPostElement.current.value)
+           props.addPost(newPostElement.current.value)
         }
     }
 
