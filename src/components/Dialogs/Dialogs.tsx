@@ -3,10 +3,10 @@ import classes from "./Dialogs.module.css";
 import {NavLink} from "react-router-dom";
 import {DialogItem} from "./DialogItem/DialogsItem";
 import {Message} from "./Message/Message";
-import {DialogsDataType, MessageDataType} from "../../redux/state";
+import { DialogType, MessageType} from "../../redux/state";
 
 export const Dialogs = (props:any) => {
-
+debugger
     // let newMessageElement = useRef<HTMLTextAreaElement>(null)
     // const addMessage = () => {
     //     if (newMessageElement.current !== null) {
@@ -14,8 +14,8 @@ export const Dialogs = (props:any) => {
     //     }
     // }
 
-let dialogsElements = props.dialogsData.map((el:DialogsDataType)=> <DialogItem name={el.name} id={el.id}/>);
-let messageElements = props.messageData.map((el:MessageDataType)=> <Message message={el.message} id={el.id}/>);
+let dialogsElements = props.dialogsPageData.dialogs.map((el:DialogType)=> <DialogItem name={el.name} id={el.id}/>);
+let messageElements = props.dialogsPageData.messages.map((el:MessageType)=> <Message message={el.message} id={el.id}/>);
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
