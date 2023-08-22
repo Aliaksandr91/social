@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 import classes from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {PostType, updateNewPostText} from "../../../redux/state";
+import {PostType} from "../../../redux/state";
 
 export const MyPosts = (props: any) => {
     let postsElements = props.posts.map((el: PostType) => (
