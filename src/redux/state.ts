@@ -1,5 +1,6 @@
-import {rerenderEntireTree} from "../render";
+import {observe} from "web-vitals/dist/modules/lib/observe";
 
+let rerenderEntireTree = (state:RootStateType)=>{}
 export type PostType = {
     id: number;
     message: string;
@@ -80,5 +81,8 @@ export const updateNewPostText = (newText:string)=> {
     // return (
     //     {...state, postData: [...state.postData, newPost]}
     // )
+}
 
+export const subscribe=(observer:any) =>{
+    rerenderEntireTree=observer
 }
