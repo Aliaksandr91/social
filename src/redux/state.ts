@@ -1,5 +1,11 @@
-export type RootStoreType = {
+export type StoreType = {
     _state: RootStateType
+    updateNewPostText: (newText: string) => void
+    addPost: () => void
+    subscribe: (callBack: (state: RootStateType) => void) => void;
+    _callSubscriber: (state:RootStateType) => void
+    getState: () => RootStateType
+
 }
 export type PostType = {
     id: number;
@@ -34,7 +40,10 @@ export type RootStateType = {
     dialogsPage: DialogsPageType
     sidebar: Sidebar
 }
-export let store:any = {
+export const store: StoreType = {
+    _callSubscriber(state:RootStateType) {
+        console.log('no observer')
+    },
     _state: {
         profilePage: {
             posts: [
@@ -64,13 +73,13 @@ export let store:any = {
         sidebar: {}
     },
     getState() {
-      return this._state
+        return this._state
     },
-    _callSubscriber() {
-        console.log('State changed')
+    subscribe(observer: (state: RootStateType)=> void){
+       this._callSubscriber = observer
     },
     addPost() {
-        let newPost = {id: 5, message: this._state.profilePage.newPostText, likesCount: 0}
+        const newPost = {id: 5, message: this._state.profilePage.newPostText, likesCount: 0}
         this._state.profilePage.posts.push(newPost)
         this._state.profilePage.newPostText = ''
         this._callSubscriber(this._state)
@@ -85,8 +94,5 @@ export let store:any = {
         //     {...this._state, newPostText: [...this._state.profilePage, newText]}
         // )
     },
-    subscribe(observer: any) {
-        this.rerenderEntireTree = observer
-    }
 
 }
