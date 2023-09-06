@@ -10,14 +10,15 @@ export const MyPosts = (props: any) => {
     let newPostElement = useRef<HTMLTextAreaElement>(null)
     const addPost = () => {
         if (newPostElement.current !== null) {
-            props.addPost(newPostElement.current.value)
-
+            //props.addPost(newPostElement.current.value)
+            props.dispatch({type: 'ADD-POST'})
         }
     }
 
     const onPostChange = () => {
         if (newPostElement.current !== null) {
-            props.updateNewPostText(newPostElement.current.value)
+            //props.updateNewPostText(newPostElement.current.value)
+            props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText:newPostElement.current.value })
         }
 
     }
