@@ -121,3 +121,14 @@ export const store: StoreType = {
     }
 
 }
+export const addPostAC = () => {
+    return {
+        type: 'ADD-POST'
+    } as const
+}
+export const updateNewPostTextAC = (text:string) => {
+    return {
+        type: 'UPDATE-NEW-POST-TEXT',
+        newText: text
+    } as const
+} 
