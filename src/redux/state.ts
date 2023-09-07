@@ -7,12 +7,10 @@ export type StoreType = {
 
     //updateNewPostText: (newText: string) => void
     //addPost: () => void
-    dispatch: (action: any)=>void
+    dispatch: (action: any) => void
 }
 
-export type RootActionTypes = {
-
-}
+export type RootActionTypes = {}
 
 export type PostType = {
     id: number;
@@ -37,6 +35,7 @@ export type MessageType = {
 export type DialogsPageType = {
     dialogs: DialogType[];
     messages: MessageType[]
+    newMessageBody: string
 }
 
 type Sidebar = {}
@@ -73,6 +72,7 @@ export const store: StoreType = {
                 {id: 5, message: 'bbbb'},
                 {id: 6, message: 'kkkk'}
             ],
+            newMessageBody: ''
         },
         sidebar: {}
     },
@@ -117,6 +117,14 @@ export const store: StoreType = {
             // return (
             //     {...this._state, newPostText: [...this._state.profilePage, newText]}
             // )
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-BODY') {
+            this._state.dialogsPage.newMessageBody = action.body
+            this._callSubscriber(this._state)
+        } else if (action.type === 'SEND-MESSAGE') {
+            let body = this._state.dialogsPage.newMessageBody
+            this._state.dialogsPage.newMessageBody = ''
+            this._state.dialogsPage.messages.push({id: 7, message: body})
+            this._callSubscriber(this._state)
         }
     }
 
@@ -126,9 +134,20 @@ export const addPostAC = () => {
         type: 'ADD-POST'
     } as const
 }
-export const updateNewPostTextAC = (text:string) => {
+export const updateNewPostTextAC = (text: string) => {
     return {
         type: 'UPDATE-NEW-POST-TEXT',
         newText: text
     } as const
-} 
+}
+export const updateNewMessageBodyAC = (body:any) => {
+    return {
+        type: 'UPDATE-NEW-MESSAGE-BODY',
+        body:body
+    } as const
+}
+export const sendMessageAC = () => {
+    return {
+        type: 'SEND-MESSAGE'
+    } as const
+}
