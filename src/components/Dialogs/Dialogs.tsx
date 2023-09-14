@@ -3,7 +3,8 @@ import classes from "./Dialogs.module.css";
 import {NavLink} from "react-router-dom";
 import {DialogItem} from "./DialogItem/DialogsItem";
 import {Message} from "./Message/Message";
-import {DialogType, MessageType, sendMessageAC, updateNewMessageBodyAC} from "../../redux/state";
+import {DialogType, MessageType} from "../../redux/state";
+import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialogs-reducer";
 
 export const Dialogs = (props:any) => {
     let state = props.store.getState().dialogsPage
