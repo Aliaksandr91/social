@@ -1,23 +1,21 @@
 import React, {ChangeEvent, useRef} from "react";
 import classes from "./Dialogs.module.css";
-import {NavLink} from "react-router-dom";
 import {DialogItem} from "./DialogItem/DialogsItem";
 import {Message} from "./Message/Message";
 import {DialogType, MessageType} from "../../redux/store";
-import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialogs-reducer";
 
 export const Dialogs = (props:any) => {
-    let state = props.store.getState().dialogsPage
+    let state = props.dialogsPage
     // let newMessageElement = useRef<HTMLTextAreaElement>(null)
     const onSendMessageClick = () => {
         // if (newMessageElement.current !== null) {
         //     alert(newMessageElement.current.value)
         // }
-        props.store.dispatch(sendMessageAC())
+        props.sendMessage()
     }
     const onNewMessageChange = (e:ChangeEvent<HTMLTextAreaElement>)=> {
         let body = e.currentTarget.value
-        props.store.dispatch(updateNewMessageBodyAC(body))
+        props.updateNewMessageBody(body)
     }
 
 let dialogsElements = state.dialogs.map((el:DialogType)=> <DialogItem name={el.name} id={el.id}/>);
