@@ -14,8 +14,6 @@ export type StoreType = {
     dispatch: (action: any) => void
 }
 
-export type RootActionTypes = {}
-
 export type PostType = {
     id: number;
     message: string;
