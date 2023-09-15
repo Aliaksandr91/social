@@ -20,13 +20,11 @@ function App(props: any) {
                 <div className='app-wrapper-content'>
                     <Routes>
                         <Route path="/profile"
-                               element={<Profile store={props.store}
-                               />}
+                               element={<Profile/>}
                         />
                         <Route path="/dialogs/*"
                                element={
-                                   <DialogsContainer store={props.store}
-                                   />
+                                   <DialogsContainer/>
                                }
                         />
                         <Route path="/news" element={<News/>}/>

@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 import classes from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import { PostType } from "../../../redux/store";
+import { PostType } from "../../../store/store";
 
 export const MyPosts = (props: any) => {
     debugger

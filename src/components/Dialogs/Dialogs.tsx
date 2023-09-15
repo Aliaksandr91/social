@@ -2,7 +2,7 @@ import React, {ChangeEvent, useRef} from "react";
 import classes from "./Dialogs.module.css";
 import {DialogItem} from "./DialogItem/DialogsItem";
 import {Message} from "./Message/Message";
-import {DialogType, MessageType} from "../../redux/store";
+import {DialogType, MessageType} from "../../store/store";
 
 export const Dialogs = (props:any) => {
     let state = props.dialogsPage
