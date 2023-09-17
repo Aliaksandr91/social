@@ -1,11 +1,11 @@
 import React, {useRef} from "react";
 import classes from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import { PostType } from "../../../store/store";
+import {PostType} from "../../../store/store";
 
 export const MyPosts = (props: any) => {
     let postsElements = props.posts.map((el: PostType) => (
-        <Post message={el.message} likesCount={el.likesCount}/>
+        <Post key={el.id} message={el.message} likesCount={el.likesCount}/>
     ));
     let newPostElement = useRef<HTMLTextAreaElement>(null)
     const onAddPost = () => {

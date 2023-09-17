@@ -18,8 +18,8 @@ export const Dialogs = (props:any) => {
         props.updateNewMessageBody(body)
     }
 
-let dialogsElements = state.dialogs.map((el:DialogType)=> <DialogItem name={el.name} id={el.id}/>);
-let messagesElements = state.messages.map((el:MessageType)=> <Message message={el.message} id={el.id}/>);
+let dialogsElements = state.dialogs.map((el:DialogType)=> <DialogItem key={el.id} name={el.name} id={el.id}/>);
+let messagesElements = state.messages.map((el:MessageType)=> <Message key={el.id} message={el.message} id={el.id}/>);
 let newMessageBody =state.newMessageBody
     return (
         <div className={classes.dialogs}>
