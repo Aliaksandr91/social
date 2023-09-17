@@ -6,13 +6,10 @@ import App from "./App";
 import React from "react";
 import {Provider} from "react-redux";
 
-let rerenderEntireTree = (state: RootStateType) => {
-    ReactDOM.render(
-        <Provider store={store}>
-            <App/>
-        </Provider>,
-        document.getElementById('root')
-    );
-}
-rerenderEntireTree(store.getState())
-store.subscribe(() => rerenderEntireTree(store.getState()))
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+    document.getElementById('root')
+);
