@@ -4,7 +4,6 @@ import {Post} from "./Post/Post";
 import { PostType } from "../../../store/store";
 
 export const MyPosts = (props: any) => {
-    debugger
     let postsElements = props.posts.map((el: PostType) => (
         <Post message={el.message} likesCount={el.likesCount}/>
     ));
