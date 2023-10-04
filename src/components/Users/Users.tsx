@@ -1,9 +1,15 @@
 import {userType} from "../../store/users-reducer";
 import styles from './users.module.css'
+import axios from "axios";
+import userPhoto from '../../assets/images/profile-photo.png'
 
 export const Users = (props: any) => {
-    if (props.users.length === 0) {
+    if (props.users.length !== 0) {
         //props.setUsers()
+        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(response => {
+                props.setUsers(response.data.items)
+            })
     }
     return (
         <div>
