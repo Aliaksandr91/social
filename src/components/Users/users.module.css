@@ -2,3 +2,21 @@
     width: 50px;
     height: 50px;
 }
+.userContainer {
+    display: flex;
+}
+.userMain {
+    min-width: 80px;
+    min-height: 80px;
+}
+.userDescription {
+    width: calc(100% - 200px);
+    display: flex;
+    justify-content: space-between;
+}
+.userText {
+    min-width: 400px;
+}
+.userLoc {
+    min-width: 150px;
+}

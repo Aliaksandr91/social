@@ -8,8 +8,8 @@ export const Users = (props: any) => {
     return (
         <div>
             {
-                props.users.map((user: userType) => <div key={user.id}>
-                    <div>
+                props.users.map((user: userType) => <div className={styles.userContainer} key={user.id}>
+                    <div className={styles.userMain}>
                         <div><img src={user.photoUrl} className={styles.userPhoto} alt=""/></div>
                         <div>
                             {user.followed ? <button onClick={() => {
@@ -19,12 +19,12 @@ export const Users = (props: any) => {
                             }}>Follow</button>}
                         </div>
                     </div>
-                    <div>
-                        <div>
+                    <div className={styles.userDescription}>
+                        <div className={styles.userText}>
                             <div>{user.fullName}</div>
                             <div>{user.status}</div>
                         </div>
-                        <div>
+                        <div className={styles.userLoc}>
                             <div>{user.location.country}</div>
                             <div>{user.location.city}</div>
 
