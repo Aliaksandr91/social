@@ -1,46 +1,46 @@
+import React from "react";
 import {userType} from "../../store/users-reducer";
-import styles from './users.module.css'
+import styles from "./users.module.css";
 import axios from "axios";
 import userPhoto from '../../assets/images/profile-photo.png'
+export class Users extends React.Component<any, any> {
 
-export const Users = (props: any) => {
-    const getUsers =()=> {
-        if (props.users.length !== 0) {
+    constructor(props:any) {
+        super(props);
             axios.get('https://social-network.samuraijs.com/api/1.0/users')
                 .then(response => {
-                    props.setUsers(response.data.items)
+                    debugger
+                    this.props.setUsers(response.data.items)
                 })
-        }
     }
-
-    return (
-        <div>
-            <button onClick={getUsers}>Get Users</button>
+    render() {
+        return <div>
             {
-                props.users.map((user: userType) => <div className={styles.userContainer} key={user.id}>
+                this.props.users.map((user: userType) => <div className={styles.userContainer} key={user.id}>
                     <div className={styles.userMain}>
-                        <div><img src={user.photoUrl} className={styles.userPhoto} alt=""/></div>
+                        <div><img src={user.photos.small ? user.photos.small: userPhoto} className={styles.userPhoto} alt=""/></div>
                         <div>
                             {user.followed ? <button onClick={() => {
-                                props.unfollow(user.id)
+                                this.props.unfollow(user.id)
                             }}>Unfollow</button> : <button onClick={() => {
-                                props.follow(user.id)
+                                this.props.follow(user.id)
                             }}>Follow</button>}
                         </div>
                     </div>
                     <div className={styles.userDescription}>
                         <div className={styles.userText}>
-                            <div>{user.fullName}</div>
+                            <div>{user.name}</div>
                             <div>{user.status}</div>
                         </div>
                         <div className={styles.userLoc}>
-                            <div>{user.location.country}</div>
-                            <div>{user.location.city}</div>
-
+                            <div>{'user.location.country'}</div>
+                            <div>{'user.location.city'}</div>
                         </div>
                     </div>
                 </div>)
             }
         </div>
-    )
+
+    }
 }
+

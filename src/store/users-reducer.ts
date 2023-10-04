@@ -1,12 +1,15 @@
 export type userType = {
-    id: number
-    photoUrl: string
-    followed: boolean
-    fullName: string
-    status: string,
-    location: { city: string, country: string }
 
+    "name": string,
+    "id": number,
+    "photos": {
+        "small": null | string,
+        "large": null | string
+    }
+    "status": null | string,
+    "followed": boolean
 }
+
 const initialState = {
     users: [
         {
