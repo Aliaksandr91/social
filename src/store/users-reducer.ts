@@ -32,7 +32,7 @@ const initialState = {
             fullName: 'Andrew',
             status: 'I am a boss too',
             location: {city: 'Kiev', country: 'Ukraine'}
-        },
+        }
     ]
 }
 
