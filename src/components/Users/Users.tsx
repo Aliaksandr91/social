@@ -1,5 +1,5 @@
 import React from "react";
-import {userType} from "../../store/users-reducer";
+import {UserType} from "../../store/users-reducer";
 import styles from "./users.module.css";
 import axios from "axios";
 import userPhoto from '../../assets/images/profile-photo.png'
@@ -16,9 +16,9 @@ export class Users extends React.Component<any, any> {
     render() {
         return <div>
             {
-                this.props.users.map((user: userType) => <div className={styles.userContainer} key={user.id}>
+                this.props.users.map((user: UserType) => <div className={styles.userContainer} key={user.id}>
                     <div className={styles.userMain}>
-                        <div><img src={user.photos.small ? user.photos.small: userPhoto} className={styles.userPhoto} alt=""/></div>
+                        <div><img src={user.photos.small !== null ? user.photos.small : userPhoto} className={styles.userPhoto} alt=""/></div>
                         <div>
                             {user.followed ? <button onClick={() => {
                                 this.props.unfollow(user.id)
