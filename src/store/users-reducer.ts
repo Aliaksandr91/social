@@ -13,12 +13,14 @@ export type UsersStateType = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    isFetching:boolean
 }
 const initialState: UsersStateType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
 }
 
 export const usersReducer = (state = initialState, action: ActionsTypes): UsersStateType => {
@@ -45,6 +47,9 @@ export const usersReducer = (state = initialState, action: ActionsTypes): UsersS
         }
         case 'SET-TOTAL-USERS-COUNT': {
             return {...state, totalUsersCount: action.count}
+        }
+        case 'TOGGLE-LOADER': {
+            return {...state, isFetching: action.loading}
         }
 
         default:
@@ -81,8 +86,16 @@ export const setTotalUsersCountAC = (count: number) => {
         count
     } as const
 }
+export const setLoaderAC = (loading:boolean) => {
+    return {
+        type: 'TOGGLE-LOADER',
+        loading
+    } as const
+}
 type ActionsTypes = ReturnType<typeof followAC>
     | ReturnType<typeof unFollowAC>
     | ReturnType<typeof setUsersAC>
     | ReturnType<typeof setCurrentPageAC>
     | ReturnType<typeof setTotalUsersCountAC>
+    | ReturnType<typeof setLoaderAC>
+
