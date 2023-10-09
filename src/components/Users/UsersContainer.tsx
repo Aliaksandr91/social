@@ -1,6 +1,5 @@
 import {connect} from "react-redux";
 import {AppRootStateType} from "../../store/redux-store";
-import {Dispatch} from "redux";
 import {
     followAC,
     setCurrentPageAC,
@@ -14,15 +13,6 @@ import axios from 'axios';
 import {Users} from "./Users";
 import { Loader } from "../Loader/Loader";
 
-type mapDispatchToPropsType = {
-    follow: (userId: number) => void
-    unfollow: (userId: number) => void
-    setUsers: (users: any) => void
-    setCurrentPage: (pageNumber: number) => void
-    setTotalUsersCount: (totalCount: number) => void
-    setLoader: (loading: boolean) => void
-
-}
 
 
 class UsersContainer extends React.Component<any, any> {

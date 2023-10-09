@@ -1,4 +1,4 @@
-import {addPostAC, profileReducer, updateNewPostTextAC} from "./profile-reducer";
+import {addPostAC, profileReducer, setUsersProfileAC, updateNewPostTextAC} from "./profile-reducer";
 import {dialogsReducer, sendMessageAC, updateNewMessageBodyAC} from "./dialogs-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
 
@@ -22,7 +22,8 @@ export type PostType = {
 
 export type ProfilePageType = {
     posts: PostType[];
-    newPostText: string
+    newPostText: string,
+    profile?:any
 }
 
 export type DialogType = {
@@ -49,11 +50,12 @@ export type RootStateType = {
     sidebar: SidebarType
 }
 
-export type ActionsTypes = AddPostActionsType | UpdateNewPostTextActionsType | UpdateNewMessageBodyACActionsType | sendMessageACActionsType
+export type ActionsTypes = AddPostActionsType | UpdateNewPostTextActionsType | UpdateNewMessageBodyActionsType | SendMessageActionsType | setUsersProfileActionsType
 export type AddPostActionsType = ReturnType<typeof addPostAC>
 export type UpdateNewPostTextActionsType = ReturnType<typeof updateNewPostTextAC>
-export type UpdateNewMessageBodyACActionsType = ReturnType<typeof updateNewMessageBodyAC>
-export type sendMessageACActionsType = ReturnType<typeof sendMessageAC>
+export type UpdateNewMessageBodyActionsType = ReturnType<typeof updateNewMessageBodyAC>
+export type SendMessageActionsType = ReturnType<typeof sendMessageAC>
+export type setUsersProfileActionsType = ReturnType<typeof setUsersProfileAC>
 
 
 export const store: StoreType = {
