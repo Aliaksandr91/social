@@ -10,15 +10,7 @@ export const Users = (props:any) => {
         pages.push(i)
     }
     return <div>
-        <div>
-            {pages.map((page) => {
-                const isSelected = props.currentPage === page && props.currentPage !== false;
-                return <span className={isSelected ? styles.selectedPage + styles.pages : styles.pages} onClick={() => {
-                    props.onPageChanged(page)
-                }}>{page}</span>
-            })}
 
-        </div>
         {
             props.users.map((user: UserType) => <div className={styles.userContainer} key={user.id}>
                 <div className={styles.userMain}>
@@ -44,5 +36,13 @@ export const Users = (props:any) => {
                 </div>
             </div>)
         }
+        <div className={styles.PagesWrapper}>
+            {pages.map((page) => {
+                const isSelected = props.currentPage === page && props.currentPage !== false;
+                return <span className={isSelected ? styles.selectedPage  : ''} onClick={() => {
+                    props.onPageChanged(page)
+                }}>{page}</span>
+            })}
+        </div>
     </div>
 }

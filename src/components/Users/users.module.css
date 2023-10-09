@@ -1,3 +1,18 @@
+.PagesWrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+.PagesWrapper > span {
+    padding-right: 2px;
+    padding-left: 2px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.PagesWrapper > span:hover {
+    color: #fff;
+    transition: 0.2s;
+}
+
 .userPhoto {
     width: 50px;
     height: 50px;
@@ -20,10 +35,6 @@
 .userLoc {
     min-width: 150px;
 }
-.pages .selectedPage {
+.selectedPage {
     font-weight: bold;
-}
-.pages {
-    padding-right: 2px;
-    padding-left: 2px;
 }
