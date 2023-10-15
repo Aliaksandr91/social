@@ -4,17 +4,45 @@ import axios from "axios";
 import {AppRootStateType} from "../../store/redux-store";
 import {connect} from "react-redux";
 import {setUsersProfileAC} from "../../store/profile-reducer";
-import {withRouter} from "react-router-dom";
+
+import {
+    useLocation,
+    useNavigate,
+    useParams,
+} from "react-router-dom";
+
+function withRouter(Component:any) {
+    function ComponentWithRouterProp(props:any) {
+        let location = useLocation();
+        let navigate = useNavigate();
+        let params = useParams();
+        return (
+            <Component
+                {...props}
+                router={{ location, navigate, params }}
+            />
+        );
+    }
+    return ComponentWithRouterProp;
+}
+
+
+
+
 
 class ProfileContainer extends React.Component<any, any> {
-
     componentDidMount() {
-        let userId = this.props.match.params.userId
+        console.log(this.props)
+        //let userId = this.props.match.params.userId
+        let userId = this.props.router.params.userId
+
+        //let profileId = this.props.router.params.profileId;
         if (!userId) userId = 2
-        this.props.setLoader(true)
+        //this.props.setLoader(true)
+
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
             .then(response => {
-                this.props.setUserProfile(response.data)
+                this.props.setUsersProfile(response.data)
             })
     }
 
@@ -31,10 +59,12 @@ const mapStateToProps = (state: AppRootStateType) => {
     }
 }
 let WithUrlDataContainerComponent = withRouter(ProfileContainer)
-export default connect(mapStateToProps, {setUsersProfile: setUsersProfileAC})(WithUrlDataContainerComponent)
+export default connect(mapStateToProps, {setUsersProfile: setUsersProfileAC})(withRouter(ProfileContainer));
+//export default connect(mapStateToProps, {setUsersProfile: setUsersProfileAC})(WithUrlDataContainerComponent)
 
 //
-// Ребята, кто писал проект на react router v6, нужно использовать хуки, а не HOC шаблон. Но по скольку в курсе наша контейнерная компонента ProfileContainer - классовая компонента, то мы не можем использовать хуки в классвовых компонентах. Есть решение из оффициальной документации - создать функцию-обёртку, которая по принципу идентична к withRouter:import {
+// Ребята, кто писал проект на react router v6, нужно использовать хуки, а не HOC шаблон. Но по скольку в курсе наша контейнерная компонента ProfileContainer - классовая компонента, то мы не можем использовать хуки в классвовых компонентах. Есть решение из оффициальной документации - создать функцию-обёртку, которая по принципу идентична к
+// withRouter:import {
 //     useLocation,
 //     useNavigate,
 //     useParams,
