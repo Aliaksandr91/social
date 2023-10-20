@@ -9,29 +9,27 @@ import {
     unFollowAC
 } from "../../store/users-reducer";
 import React from "react";
-import axios from 'axios';
 import {Users} from "./Users";
-import { Loader } from "../Loader/Loader";
-
+import {Loader} from "../Loader/Loader";
+import {usersAPI} from "../../api";
 
 
 class UsersContainer extends React.Component<any, any> {
     componentDidMount() {
         this.props.setLoader(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,{withCredentials:true})
-            .then(response => {
-                this.props.setUsers(response.data.items)
-                this.props.setTotalUsersCount(response.data.totalCount)
-                this.props.setLoader(false)
-            })
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+            this.props.setUsers(data.items)
+            this.props.setTotalUsersCount(data.totalCount)
+            this.props.setLoader(false)
+        })
     }
 
     onPageChanged = (pageNumber: number) => {
         this.props.setLoader(true)
         this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,{withCredentials:true})
-            .then(response => {
-                this.props.setUsers(response.data.items)
+        usersAPI.getUsers(pageNumber, this.props.pageSize)
+            .then(data => {
+                this.props.setUsers(data.items)
                 this.props.setLoader(false)
             })
     }
@@ -63,11 +61,11 @@ const mapStateToProps = (state: AppRootStateType) => {
     }
 }
 
-export default connect(mapStateToProps,{
+export default connect(mapStateToProps, {
     follow: followAC,
     unfollow: unFollowAC,
     setUsers: setUsersAC,
     setCurrentPage: setCurrentPageAC,
     setTotalUsersCount: setTotalUsersCountAC,
-    setLoader:setLoaderAC
+    setLoader: setLoaderAC
 })(UsersContainer)
