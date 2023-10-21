@@ -14,13 +14,15 @@ export type UsersStateType = {
     totalUsersCount: number
     currentPage: number
     isFetching:boolean
+    followingInProgress:number[]
 }
 const initialState: UsersStateType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
+    followingInProgress:[]
 }
 
 export const usersReducer = (state = initialState, action: ActionsTypes): UsersStateType => {
@@ -50,6 +52,14 @@ export const usersReducer = (state = initialState, action: ActionsTypes): UsersS
         }
         case 'TOGGLE-LOADER': {
             return {...state, isFetching: action.loading}
+        }
+        case 'TOGGLE-IS-FOLLOWING-PROGRESS': {
+            return {
+                ...state,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.userId]
+                    : [...state.followingInProgress.filter(id=>id!== action.userId)]
+            }
         }
 
         default:
@@ -92,10 +102,18 @@ export const setLoaderAC = (loading:boolean) => {
         loading
     } as const
 }
+export const toggleFollowingProgressAC = (isFetching:boolean, userId:number) => {
+    return {
+        type: 'TOGGLE-IS-FOLLOWING-PROGRESS',
+        isFetching,
+        userId
+    } as const
+}
 type ActionsTypes = ReturnType<typeof followAC>
     | ReturnType<typeof unFollowAC>
     | ReturnType<typeof setUsersAC>
     | ReturnType<typeof setCurrentPageAC>
     | ReturnType<typeof setTotalUsersCountAC>
     | ReturnType<typeof setLoaderAC>
+    | ReturnType<typeof toggleFollowingProgressAC>
 
