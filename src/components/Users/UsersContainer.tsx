@@ -1,37 +1,22 @@
 import {connect} from "react-redux";
 import {AppRootStateType} from "../../store/redux-store";
 import {
-    followAC,
+    followTC, getUsersTC,
     setCurrentPageAC,
-    setLoaderAC,
-    setTotalUsersCountAC,
-    setUsersAC, toggleFollowingProgressAC,
-    unFollowAC
+    toggleFollowingProgressAC, unfollowTC
 } from "../../store/users-reducer";
 import React from "react";
 import {Users} from "./Users";
 import {Loader} from "../Loader/Loader";
-import {usersAPI} from "../../api";
 
 
 class UsersContainer extends React.Component<any, any> {
     componentDidMount() {
-        this.props.setLoader(true)
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.setUsers(data.items)
-            this.props.setTotalUsersCount(data.totalCount)
-            this.props.setLoader(false)
-        })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.setLoader(true)
-        this.props.setCurrentPage(pageNumber)
-        usersAPI.getUsers(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.setUsers(data.items)
-                this.props.setLoader(false)
-            })
+        this.props.getUsers(pageNumber, this.props.pageSize)
     }
 
     render() {
@@ -44,7 +29,6 @@ class UsersContainer extends React.Component<any, any> {
                    users={this.props.users}
                    follow={this.props.follow}
                    unfollow={this.props.unfollow}
-                   toggleFollowingProgress={this.props.toggleFollowingProgress}
                    followingInProgress={this.props.followingInProgress}
             />
         </>
@@ -65,11 +49,12 @@ const mapStateToProps = (state: AppRootStateType) => {
 }
 
 export default connect(mapStateToProps, {
-    follow: followAC,
-    unfollow: unFollowAC,
-    setUsers: setUsersAC,
+    follow: followTC,
+    unfollow: unfollowTC,
+    //setUsers: setUsersAC,
     setCurrentPage: setCurrentPageAC,
-    setTotalUsersCount: setTotalUsersCountAC,
-    setLoader: setLoaderAC,
-    toggleFollowingProgress: toggleFollowingProgressAC
+    //setTotalUsersCount: setTotalUsersCountAC,
+    //setLoader: setLoaderAC,
+    toggleFollowingProgress: toggleFollowingProgressAC,
+    getUsers: getUsersTC
 })(UsersContainer)

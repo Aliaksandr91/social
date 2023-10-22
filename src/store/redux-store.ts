@@ -1,9 +1,10 @@
-import {combineReducers, legacy_createStore} from "redux"
+import {applyMiddleware, combineReducers, legacy_createStore} from "redux"
 import {profileReducer} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
 import {usersReducer} from "./users-reducer";
 import {authReducer} from "./auth-reducer";
+import thunkMiddleware from 'redux-thunk'
 
 const rootReducer = combineReducers({
     profilePage: profileReducer,
@@ -12,7 +13,7 @@ const rootReducer = combineReducers({
     usersPage:usersReducer,
     auth:authReducer
 })
-export const store = legacy_createStore(rootReducer)
+export const store = legacy_createStore(rootReducer, applyMiddleware(thunkMiddleware))
 // определить автоматически тип всего объекта состояния
 export type AppRootStateType = ReturnType<typeof rootReducer>
 // а это, чтобы можно было в консоли браузера обращаться к store в любой момент
