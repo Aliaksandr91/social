@@ -1,4 +1,7 @@
 import {ActionsTypes, ProfilePageType} from "./store";
+import {Dispatch} from "redux";
+import {usersAPI} from "../api";
+
 
 
 const initialState: ProfilePageType = {
@@ -51,4 +54,16 @@ export const setUsersProfileAC = (profile: any) => {
         type: 'SET-USER-PROFILE',
         profile
     } as const
+}
+
+type ThunkDispatch = Dispatch<ActionsTypes>
+
+export const getUsersProfileTC = (userId: number) => {
+    return (dispatch: ThunkDispatch) => {
+        usersAPI.getProfile(userId)
+            .then(response => {
+                dispatch(setUsersProfileAC(response.data))
+            })
+
+    }
 }

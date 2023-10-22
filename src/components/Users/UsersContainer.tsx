@@ -51,10 +51,7 @@ const mapStateToProps = (state: AppRootStateType) => {
 export default connect(mapStateToProps, {
     follow: followTC,
     unfollow: unfollowTC,
-    //setUsers: setUsersAC,
     setCurrentPage: setCurrentPageAC,
-    //setTotalUsersCount: setTotalUsersCountAC,
-    //setLoader: setLoaderAC,
     toggleFollowingProgress: toggleFollowingProgressAC,
     getUsers: getUsersTC
 })(UsersContainer)
