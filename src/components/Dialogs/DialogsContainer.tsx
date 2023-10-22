@@ -13,10 +13,11 @@ type mapDispatchToPropsType = {
 
 const mapStateToProps = (state: AppRootStateType) => {
     return {
-        dialogsPage: state.dialogsPage
+        dialogsPage: state.dialogsPage,
+        isAuth: state.auth.isAuth
     }
 }
-const mapDispatchToProps = (dispatch: Dispatch):mapDispatchToPropsType => {
+const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return {
         updateNewMessageBody: (body: string) => {
             dispatch(updateNewMessageBodyAC(body))

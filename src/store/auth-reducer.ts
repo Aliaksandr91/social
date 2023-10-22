@@ -1,6 +1,6 @@
 import {Dispatch} from "redux";
-import {authAPI, usersAPI} from "../api";
-import {setUsersProfileAC} from "./profile-reducer";
+import {authAPI} from "../api";
+
 
 export type initialStateType = {
     id: null | number
