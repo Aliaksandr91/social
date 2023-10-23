@@ -12,11 +12,6 @@ type mapDispatchToPropsType = {
 }
 
 
-const mapStateToProps = (state: AppRootStateType) => {
-    return {
-        dialogsPage: state.dialogsPage
-    }
-}
 const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return {
         updateNewMessageBody: (body: string) => {
@@ -28,4 +23,9 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     }
 }
 let AuthRedirectComponent = withAuthRedirectComponent(Dialogs)
+const mapStateToProps = (state: AppRootStateType) => {
+    return {
+        dialogsPage: state.dialogsPage
+    }
+}
 export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent)
