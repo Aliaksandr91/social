@@ -1,5 +1,7 @@
 .app-wrapper {
+    position: relative;
     width: 1200px;
+    min-height: 640px;
     margin: 0 auto;
     display: grid;
     grid-template-areas: "h h" "n c";
