@@ -2,8 +2,10 @@ import React from "react";
 import classes from './ProfileInfo.module.css'
 import {Loader} from "../../Loader/Loader";
 import { ProfileStatus } from "./ProfileStatus";
+import photo from '../../../assets/images/profile.png'
 
 export const ProfileInfo = (props:any) => {
+    debugger
     if (!props.profile) {
         return <Loader/>
     }
@@ -15,8 +17,8 @@ export const ProfileInfo = (props:any) => {
                 {/*     alt=""/>*/}
             </div>
             <div className={classes.descriptionBlock}>
-                <img src={props.profile.photos.large} alt=""/>
-                <ProfileStatus status={'hello'}/>
+                <img className={classes.photo} src={props.profile.photos.large ?  props.profile.photos.large : photo} alt=""/>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     )

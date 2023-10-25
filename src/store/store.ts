@@ -1,4 +1,4 @@
-import {addPostAC, profileReducer, setUsersProfileAC, updateNewPostTextAC} from "./profile-reducer";
+import {addPostAC, profileReducer, setStatusAC, setUsersProfileAC, updateNewPostTextAC} from "./profile-reducer";
 import {dialogsReducer, sendMessageAC, updateNewMessageBodyAC} from "./dialogs-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
 
@@ -23,7 +23,8 @@ export type PostType = {
 export type ProfilePageType = {
     posts: PostType[];
     newPostText: string,
-    profile?:any
+    profile?: any
+    status?: string
 }
 
 export type DialogType = {
@@ -50,12 +51,18 @@ export type RootStateType = {
     sidebar: SidebarType
 }
 
-export type ActionsTypes = AddPostActionsType | UpdateNewPostTextActionsType | UpdateNewMessageBodyActionsType | SendMessageActionsType | setUsersProfileActionsType
+export type ActionsTypes = AddPostActionsType
+    | UpdateNewPostTextActionsType
+    | UpdateNewMessageBodyActionsType
+    | SendMessageActionsType
+    | setUsersProfileActionsType
+    | setStatusActionsType
 export type AddPostActionsType = ReturnType<typeof addPostAC>
 export type UpdateNewPostTextActionsType = ReturnType<typeof updateNewPostTextAC>
 export type UpdateNewMessageBodyActionsType = ReturnType<typeof updateNewMessageBodyAC>
 export type SendMessageActionsType = ReturnType<typeof sendMessageAC>
 export type setUsersProfileActionsType = ReturnType<typeof setUsersProfileAC>
+export type setStatusActionsType = ReturnType<typeof setStatusAC>
 
 
 export const store: StoreType = {
@@ -98,22 +105,6 @@ export const store: StoreType = {
     subscribe(observer: (state: RootStateType) => void) {
         this._callSubscriber = observer
     },
-    // addPost() {
-    //     const newPost = {id: 5, message: this._state.profilePage.newPostText, likesCount: 0}
-    //     this._state.profilePage.posts.push(newPost)
-    //     this._state.profilePage.newPostText = ''
-    //     this._callSubscriber(this._state)
-    //     // return (
-    //     //     {...this._state, postData: [...this._state.postData, newPost]}
-    //     // )
-    // },
-    // updateNewPostText(newText: string) {
-    //     this._state.profilePage.newPostText = newText
-    //     this._callSubscriber(this._state)
-    //     // return (
-    //     //     {...this._state, newPostText: [...this._state.profilePage, newText]}
-    //     // )
-    // },
     dispatch(action) {
 
         this._state.profilePage = profileReducer(this._state.profilePage, action)
