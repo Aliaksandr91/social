@@ -1,5 +1,5 @@
-import {addPostAC, profileReducer, setStatusAC, setUsersProfileAC, updateNewPostTextAC} from "./profile-reducer";
-import {dialogsReducer, sendMessageAC, updateNewMessageBodyAC} from "./dialogs-reducer";
+import {addPostAC, profileReducer, setStatusAC, setUsersProfileAC} from "./profile-reducer";
+import {dialogsReducer, sendMessageAC} from "./dialogs-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
 
 export type StoreType = {
@@ -22,7 +22,6 @@ export type PostType = {
 
 export type ProfilePageType = {
     posts: PostType[];
-    newPostText: string,
     profile?: any
     status?: string
 }
@@ -39,7 +38,6 @@ export type MessageType = {
 export type DialogsPageType = {
     dialogs: DialogType[];
     messages: MessageType[]
-    newMessageBody: string
 }
 
 export type SidebarType = {}
@@ -52,14 +50,10 @@ export type RootStateType = {
 }
 
 export type ActionsTypes = AddPostActionsType
-    | UpdateNewPostTextActionsType
-    | UpdateNewMessageBodyActionsType
     | SendMessageActionsType
     | setUsersProfileActionsType
     | setStatusActionsType
 export type AddPostActionsType = ReturnType<typeof addPostAC>
-export type UpdateNewPostTextActionsType = ReturnType<typeof updateNewPostTextAC>
-export type UpdateNewMessageBodyActionsType = ReturnType<typeof updateNewMessageBodyAC>
 export type SendMessageActionsType = ReturnType<typeof sendMessageAC>
 export type setUsersProfileActionsType = ReturnType<typeof setUsersProfileAC>
 export type setStatusActionsType = ReturnType<typeof setStatusAC>
@@ -71,8 +65,7 @@ export const store: StoreType = {
             posts: [
                 {id: 1, message: 'Hi, how are you?', likesCount: 12},
                 {id: 2, message: 'Hello, my first post?', likesCount: 11}
-            ],
-            newPostText: 'it-kamasutra.com'
+            ]
         },
         dialogsPage: {
             dialogs: [
@@ -90,8 +83,7 @@ export const store: StoreType = {
                 {id: 4, message: 'aaa'},
                 {id: 5, message: 'bbbb'},
                 {id: 6, message: 'kkkk'}
-            ],
-            newMessageBody: ''
+            ]
         },
         sidebar: {}
     },

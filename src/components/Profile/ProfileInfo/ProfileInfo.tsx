@@ -5,7 +5,6 @@ import { ProfileStatus } from "./ProfileStatus";
 import photo from '../../../assets/images/profile.png'
 
 export const ProfileInfo = (props:any) => {
-    debugger
     if (!props.profile) {
         return <Loader/>
     }
