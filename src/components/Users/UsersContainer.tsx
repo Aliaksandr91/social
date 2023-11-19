@@ -7,7 +7,7 @@ import {
 } from "../../store/users-reducer";
 import React from "react";
 import {Users} from "./Users";
-import {Loader} from "../Loader/Loader";
+import {Loader} from "../common/Loader/Loader";
 import {compose} from "redux";
 import {withAuthRedirectComponent} from "../../hoc/withAuthRedirect";
 
