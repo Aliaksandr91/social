@@ -49,7 +49,7 @@ class App extends React.Component<any> {
     }
 }
 const mapStateToProps = (state:AppRootStateType) => ({
-    initialized: state.app.initialized
+    initialized: state.app.isInitialized
 })
 export default connect(mapStateToProps, {initializeAppTC})(App)
 //export default withRouter(connect(null, {getAuthUserData: getAuthUserDataTC, logout:logoutTC})(App))

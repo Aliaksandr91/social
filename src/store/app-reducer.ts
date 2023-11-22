@@ -3,37 +3,34 @@ import {AppDispatch} from "./redux-store";
 
 
 export type initialStateType = {
-    initialized:boolean
+    isInitialized: boolean
 }
-
 const initialState: initialStateType = {
-    initialized:false
+    isInitialized: false
 }
 
-type ActionsTypes = ReturnType<typeof initializedSuccessAC>
+
+type ActionsTypes = ReturnType<typeof setInitializedSuccessAC>
 
 export const appReducer = (state: initialStateType = initialState, action: ActionsTypes): initialStateType => {
     switch (action.type) {
-        case 'INITIALIZED_SUCCESS':
-
+        case 'SET-INITIALIZED-SUCCESS':
             return {
                 ...state,
-                initialized:true
+                isInitialized: true,
             }
         default:
             return state
     }
 }
 
-export const initializedSuccessAC = () => {
-    return {
-        type: 'INITIALIZED_SUCCESS',
-    } as const
-}
+export const setInitializedSuccessAC = () => ({
+    type: 'SET-INITIALIZED-SUCCESS' as const,
+})
 
 
 export const initializeAppTC = () => (dispatch:AppDispatch)=>{
     dispatch(getAuthUserDataTC()).then(() => {
-        dispatch(initializedSuccessAC())
+        dispatch(setInitializedSuccessAC())
     })
 };
