@@ -1,5 +1,5 @@
 import {getAuthUserDataTC} from "./auth-reducer";
-import {AppDispatch} from "./redux-store";
+import {AppDispatch, AppThunkType} from "./redux-store";
 
 
 export type initialStateType = {
@@ -35,7 +35,7 @@ export const setInitializedSuccessAC = () => ({
 //     })
 // };
 
-export const initializeAppTC = () => async (dispatch:AppDispatch) => {
+export const initializeAppTC = ():AppThunkType => async (dispatch:AppDispatch) => {
     await dispatch(getAuthUserDataTC())
     dispatch(setInitializedSuccessAC())
 }
