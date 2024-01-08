@@ -29,8 +29,13 @@ export const setInitializedSuccessAC = () => ({
 })
 
 
-export const initializeAppTC = () => (dispatch:AppDispatch)=>{
-    dispatch(getAuthUserDataTC()).then(() => {
-        dispatch(setInitializedSuccessAC())
-    })
-};
+// export const initializeAppTC = () => (dispatch:AppDispatch)=>{
+//     dispatch(getAuthUserDataTC()).then(() => {
+//         dispatch(setInitializedSuccessAC())
+//     })
+// };
+
+export const initializeAppTC = () => async (dispatch:AppDispatch) => {
+    await dispatch(getAuthUserDataTC())
+    dispatch(setInitializedSuccessAC())
+}

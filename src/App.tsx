@@ -13,14 +13,18 @@ import Login from "./components/Login/Login";
 import {connect} from "react-redux";
 import {initializeAppTC} from "./store/app-reducer";
 import {AppRootStateType} from "./store/redux-store";
+import {Loader} from "./components/common/Loader/Loader";
 
 
 class App extends React.Component<any> {
     componentDidMount() {
         this.props.initializeAppTC()
     }
+
     render() {
-        if (this.props.initialized)
+        if (!this.props.initialized) {
+            return <Loader/>;
+        }
         return (
             <BrowserRouter>
                 <div className="app-wrapper">
@@ -48,10 +52,14 @@ class App extends React.Component<any> {
         );
     }
 }
-const mapStateToProps = (state:AppRootStateType) => ({
+
+const mapStateToProps = (state: AppRootStateType) => ({
     initialized: state.app.isInitialized
 })
-export default connect(mapStateToProps, {initializeAppTC})(App)
+
+export const AppContainer = connect(mapStateToProps, {initializeAppTC})(App)
+
+
 //export default withRouter(connect(null, {getAuthUserData: getAuthUserDataTC, logout:logoutTC})(App))
 // export default compose(
 //     withRouter,
