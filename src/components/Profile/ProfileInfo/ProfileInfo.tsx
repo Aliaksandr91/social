@@ -3,6 +3,7 @@ import classes from './ProfileInfo.module.css'
 import {Loader} from "../../common/Loader/Loader";
 import { ProfileStatus } from "./ProfileStatus";
 import photo from '../../../assets/images/profile.png'
+import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 
 export const ProfileInfo = (props:any) => {
     if (!props.profile) {
@@ -17,7 +18,7 @@ export const ProfileInfo = (props:any) => {
             </div>
             <div className={classes.descriptionBlock}>
                 <img className={classes.photo} src={props.profile.photos.large ?  props.profile.photos.large : photo} alt=""/>
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     )

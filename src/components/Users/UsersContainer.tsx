@@ -46,17 +46,6 @@ class UsersContainer extends React.Component<any, any> {
     }
 }
 
-
-// const mapStateToProps = (state: AppRootStateType) => {
-//     return {
-//         users: state.usersPage.users,
-//         pageSize: state.usersPage.pageSize,
-//         totalUsersCount: state.usersPage.totalUsersCount,
-//         currentPage: state.usersPage.currentPage,
-//         isFetching: state.usersPage.isFetching,
-//         followingInProgress: state.usersPage.followingInProgress
-//     }
-// }
 const mapStateToProps = (state: AppRootStateType) => {
     return {
         users: getUsers(state),
@@ -67,15 +56,6 @@ const mapStateToProps = (state: AppRootStateType) => {
         followingInProgress: getFollowingInProgress(state)
     }
 }
-
-// export default connect(mapStateToProps, {
-//     follow: followTC,
-//     unfollow: unfollowTC,
-//     setCurrentPage: setCurrentPageAC,
-//     toggleFollowingProgress: toggleFollowingProgressAC,
-//     getUsers: getUsersTC
-// })(UsersContainer)
-
 
 export default compose<React.ComponentType>(
     connect(mapStateToProps, {

@@ -122,12 +122,12 @@ type ActionsTypes = ReturnType<typeof followAC>
 
 type ThunkDispatch = Dispatch<ActionsTypes>
 
-export const getUsersTC = (currentPage: number, pageSize: number) => {
+export const getUsersTC = (page: number, pageSize: number) => {
     return (dispatch: ThunkDispatch) => {
         dispatch(setLoaderAC(true))
-        usersAPI.getUsers(currentPage, pageSize)
+        usersAPI.getUsers(page, pageSize)
             .then(data => {
-                dispatch(setCurrentPageAC(currentPage))
+                dispatch(setCurrentPageAC(page))
                 dispatch(setUsersAC(data.items))
                 dispatch(setTotalUsersCountAC(data.totalCount))
                 dispatch(setLoaderAC(false))
