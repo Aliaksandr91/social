@@ -6,31 +6,25 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLengthCreator, requiredField} from "../../../utils/validators";
 import {Textarea} from "../../common/FormControls/FormControls";
 
-export class MyPosts extends React.Component<any> {
-    shouldComponentUpdate(nextProps: Readonly<any>, nextState: Readonly<{}>): boolean {
-        return nextProps !== this.props || nextState !== this.state
+export const MyPosts = React.memo((props: any) => {
+    let postsElements = props.posts.map((el: PostType) => (
+        <Post key={el.id} message={el.message} likesCount={el.likesCount}/>
+    ));
+    let newPostElement = useRef<HTMLTextAreaElement>(null)
+    const onAddPost = (values: any) => {
+        props.addPost(values.newPostText)
     }
 
-    render() {
-        let postsElements = this.props.posts.map((el: PostType) => (
-            <Post key={el.id} message={el.message} likesCount={el.likesCount}/>
-        ));
-        let newPostElement = useRef<HTMLTextAreaElement>(null)
-        const onAddPost = (values: any) => {
-            this.props.addPost(values.newPostText)
-        }
-
-        return (
-            <div className={classes.postsBlock}>
-                <h3>My posts</h3>
-                <AddNewPostFormRedux onSubmit={onAddPost}/>
-                <div className={classes.posts}>
-                    {postsElements}
-                </div>
+    return (
+        <div className={classes.postsBlock}>
+            <h3>My posts</h3>
+            <AddNewPostFormRedux onSubmit={onAddPost}/>
+            <div className={classes.posts}>
+                {postsElements}
             </div>
-        )
-    }
-}
+        </div>
+    )
+});
 
 type FormDataType = {
     newPostText: string
