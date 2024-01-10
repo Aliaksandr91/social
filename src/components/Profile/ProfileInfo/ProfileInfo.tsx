@@ -1,7 +1,6 @@
 import React from "react";
 import classes from './ProfileInfo.module.css'
 import {Loader} from "../../common/Loader/Loader";
-import { ProfileStatus } from "./ProfileStatus";
 import photo from '../../../assets/images/profile.png'
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 
