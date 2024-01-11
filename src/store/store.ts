@@ -1,4 +1,4 @@
-import {addPostAC, profileReducer, setStatusAC, setUsersProfileAC} from "./profile-reducer";
+import {addPostAC, deletePostAC, profileReducer, setStatusAC, setUsersProfileAC} from "./profile-reducer";
 import {dialogsReducer, sendMessageAC} from "./dialogs-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
 
@@ -15,7 +15,7 @@ export type StoreType = {
 }
 
 export type PostType = {
-    id: number;
+    id: number | string;
     message: string;
     likesCount: number;
 }
@@ -53,10 +53,12 @@ export type ActionsTypes = AddPostActionsType
     | SendMessageActionsType
     | setUsersProfileActionsType
     | setStatusActionsType
+    | deletePostActionsType
 export type AddPostActionsType = ReturnType<typeof addPostAC>
 export type SendMessageActionsType = ReturnType<typeof sendMessageAC>
 export type setUsersProfileActionsType = ReturnType<typeof setUsersProfileAC>
 export type setStatusActionsType = ReturnType<typeof setStatusAC>
+export type deletePostActionsType = ReturnType<typeof deletePostAC>
 
 
 export const store: StoreType = {

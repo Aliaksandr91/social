@@ -33,11 +33,16 @@ export const profileReducer = (state = initialState, action: ActionsTypes) => {
                 ...state,
                 status: action.status
             }
+        case 'DELETE-POST' :
+            return {
+                ...state,
+                posts: state.posts.filter((post) => post.id !== action.id)
+            }
         default:
             return state
     }
 }
-export const addPostAC = (newPostText:string) => {
+export const addPostAC = (newPostText: string) => {
     return {
         type: 'ADD-POST',
         newPostText
@@ -54,6 +59,12 @@ export const setStatusAC = (status: string) => {
     return {
         type: 'SET-STATUS',
         status
+    } as const
+}
+export const deletePostAC = (id: string | number) => {
+    return {
+        type: 'DELETE-POST',
+        id
     } as const
 }
 
