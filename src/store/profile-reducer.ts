@@ -14,7 +14,7 @@ const initialState: ProfilePageType = {
 
 export const profileReducer = (state = initialState, action: ActionsTypes) => {
     switch (action.type) {
-        case 'ADD-POST':
+        case 'profile/ADD-POST':
             const newPost = {id: 5, message: action.newPostText, likesCount: 0}
             return {
                 ...state,
@@ -23,17 +23,17 @@ export const profileReducer = (state = initialState, action: ActionsTypes) => {
             };
 
 
-        case 'SET-USER-PROFILE' :
+        case 'profile/SET-USER-PROFILE' :
             return {
                 ...state,
                 profile: action.profile
             }
-        case 'SET-STATUS' :
+        case 'profile/SET-STATUS' :
             return {
                 ...state,
                 status: action.status
             }
-        case 'DELETE-POST' :
+        case 'profile/DELETE-POST' :
             return {
                 ...state,
                 posts: state.posts.filter((post) => post.id !== action.id)
@@ -44,26 +44,26 @@ export const profileReducer = (state = initialState, action: ActionsTypes) => {
 }
 export const addPostAC = (newPostText: string) => {
     return {
-        type: 'ADD-POST',
+        type: 'profile/ADD-POST',
         newPostText
     } as const
 }
 
 export const setUsersProfileAC = (profile: any) => {
     return {
-        type: 'SET-USER-PROFILE',
+        type: 'profile/SET-USER-PROFILE',
         profile
     } as const
 }
 export const setStatusAC = (status: string) => {
     return {
-        type: 'SET-STATUS',
+        type: 'profile/SET-STATUS',
         status
     } as const
 }
 export const deletePostAC = (id: string | number) => {
     return {
-        type: 'DELETE-POST',
+        type: 'profile/DELETE-POST',
         id
     } as const
 }
@@ -71,32 +71,24 @@ export const deletePostAC = (id: string | number) => {
 type ThunkDispatch = Dispatch<ActionsTypes>
 
 export const getUsersProfileTC = (userId: number) => {
-    return (dispatch: ThunkDispatch) => {
-        profileAPI.getProfile(userId)
-            .then(response => {
-                dispatch(setUsersProfileAC(response.data))
-            })
+    return async (dispatch: ThunkDispatch) => {
+        const response = await profileAPI.getProfile(userId)
+        dispatch(setUsersProfileAC(response.data))
 
     }
 }
 export const getStatusTC = (userId: number) => {
-    return (dispatch: ThunkDispatch) => {
-        profileAPI.getStatus(userId)
-            .then(response => {
-                dispatch(setStatusAC(response.data))
-            })
+    return async (dispatch: ThunkDispatch) => {
+        const response = await profileAPI.getStatus(userId)
+        dispatch(setStatusAC(response.data))
 
     }
 }
 export const updateStatusTC = (status: string) => {
-    return (dispatch: ThunkDispatch) => {
-        profileAPI.updateStatus(status)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setStatusAC(status))
-                }
-
-            })
-
+    return async (dispatch: ThunkDispatch) => {
+        const response = await profileAPI.updateStatus(status)
+        if (response.data.resultCode === 0) {
+            dispatch(setStatusAC(status))
+        }
     }
 }
