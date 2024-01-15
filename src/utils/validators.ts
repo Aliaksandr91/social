@@ -7,4 +7,4 @@ export const maxLengthCreator = (maxLength:number):FieldValidatorType => value=>
     if (value.length >=maxLength) return `Max length is ${maxLength}`
     return undefined
 }
-type FieldValidatorType = (value: string) => string | undefined
+export type FieldValidatorType = (value: string) => string | undefined
