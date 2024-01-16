@@ -11,7 +11,6 @@ import {maxLengthCreator, requiredField} from "../../utils/validators";
 export const Dialogs = (props: any) => {
     let state = props.dialogsPage
     const addNewMessage = (values:any)=> {
-        console.log(values)
         props.sendMessage(values.newMessageBody)
     }
 

@@ -5,12 +5,8 @@ import {sidebarReducer} from "./sidebar-reducer";
 export type StoreType = {
     _state: RootStateType
     _callSubscriber: (state: RootStateType) => void
-
     getState: () => RootStateType
     subscribe: (callBack: (state: RootStateType) => void) => void;
-
-    //updateNewPostText: (newText: string) => void
-    //addPost: () => void
     dispatch: (action: any) => void
 }
 
@@ -90,7 +86,6 @@ export const store: StoreType = {
         sidebar: {}
     },
     _callSubscriber(state: RootStateType) {
-        console.log('no observer')
     },
 
     getState() {

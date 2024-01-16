@@ -8,7 +8,6 @@ export class ProfileStatus extends Component<any> {
     }
 
     activateEditMode() {
-        console.log(this)
         this.setState({
             editMode: true
         })
