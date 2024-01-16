@@ -1,16 +1,21 @@
 .nav {
     grid-area: n;
-    background-color: saddlebrown;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .item {
-    color: #fff;
+    color: #515365;
 }
-
+.item:hover{
+    color: #ff5e3a;
+}
 .item a {
     color: inherit;
     text-decoration: none;
 }
 .item a.active {
-    color: gold;
+    color: #ff5e3a;
 }
