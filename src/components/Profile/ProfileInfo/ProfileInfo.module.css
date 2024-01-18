@@ -1,7 +1,11 @@
 .descriptionBlock {
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .photo {
     width: 200px;
     height: 200px;
+    padding: 25px;
 }
