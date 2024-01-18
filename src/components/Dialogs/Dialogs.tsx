@@ -46,7 +46,7 @@ const AddMessageForm:React.FC<InjectedFormProps<FormDataType>> = (props) => {
                 validate={[requiredField,maxLength100]}
             />
             <div>
-                <button>Send</button>
+                <button className={'btn'}>Send</button>
             </div>
         </form>
 

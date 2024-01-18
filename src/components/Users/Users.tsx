@@ -69,12 +69,12 @@ export const Users = (props: any) => {
                             </div>
                             <div>
                                 {user.followed ? (
-                                    <button disabled={props.followingInProgress.some((id: number) => id === user.id)}
+                                    <button className={'btn'} disabled={props.followingInProgress.some((id: number) => id === user.id)}
                                             onClick={() => {
                                                 props.unfollow(user.id)
                                             }}>Unfollow</button>
                                 ) : (
-                                    <button disabled={props.followingInProgress.some((id: number) => id === user.id)}
+                                    <button className={'btn'} disabled={props.followingInProgress.some((id: number) => id === user.id)}
                                             onClick={() => {
                                                 props.follow(user.id)
                                             }}>Follow</button>
