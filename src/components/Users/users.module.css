@@ -9,7 +9,7 @@
     transition: 0.2s;
 }
 .PagesWrapper > span:hover {
-    color: #fff;
+    color: #ff5e3a;
     transition: 0.2s;
 }
 
@@ -19,10 +19,15 @@
 }
 .userContainer {
     display: flex;
+    padding: 10px 0;
 }
 .userMain {
     min-width: 80px;
     min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 .userDescription {
     width: calc(100% - 200px);
@@ -37,4 +42,5 @@
 }
 .selectedPage {
     font-weight: bold;
+    color: #ff5e3a;
 }

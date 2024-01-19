@@ -42,6 +42,7 @@ const addNewPostForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                     name={'newPostText'}
                     placeholder={'Enter your text'}
                     validate={[requiredField, maxLength10]}
+                    className={classes.postField}
                 />
             </div>
             <div>

@@ -4,3 +4,17 @@
 .posts {
     margin-top: 10px;
 }
+.postField {
+    resize: none;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+
+}
+
+.postField:focus {
+    border-color: #ff5e3a;
+}
