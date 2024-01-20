@@ -25,13 +25,13 @@ export const dialogsReducer = (state = initialState, action: ActionsTypes): Dial
             let body = action.newMessageBody
             return {
                 ...state,
-                messages: [...state.messages, {id: 7, message: body}]
+                messages: [...state.messages, {id: 7, message: body}],
             }
         default:
             return state
     }
 }
 
-export const sendMessageAC = (newMessageBody:any) => {
+export const sendMessageAC = (newMessageBody:string) => {
     return {type: 'SEND-MESSAGE', newMessageBody} as const
 }
