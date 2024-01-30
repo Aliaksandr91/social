@@ -25,10 +25,10 @@ export const Dialogs = (props: any) => {
                 <div className={classes.dialogsItems}>
                     {dialogsElements}
                 </div>
-                <div className={classes.messages}>
-                    {/*{messagesElements}*/}
+                <div>
+                    <AddMessageFormRedux onSubmit={addNewMessage}/>
                 </div>
-                <AddMessageFormRedux onSubmit={addNewMessage}/>
+
 
             </div>
         )
