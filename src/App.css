@@ -1,7 +1,8 @@
 .app-wrapper {
     position: relative;
     height: 100vh;
-    width: 1200px;
+    width: 100%;
+    max-width: 1200px;
     min-height: 640px;
     margin: 0 auto;
     display: grid;

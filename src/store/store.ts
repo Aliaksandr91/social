@@ -14,7 +14,7 @@ export type ProfilePageType = {
     status?: string
 }
 
-export type DialogType = {
+type DialogType = {
     id: number
     name: string
 }

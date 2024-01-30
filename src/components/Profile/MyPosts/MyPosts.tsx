@@ -45,7 +45,7 @@ const addNewPostForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                     className={classes.postField}
                 />
             </div>
-            <div>
+            <div className={classes.postControl}>
                 <button className={'btn'}>Add post</button>
             </div>
         </form>

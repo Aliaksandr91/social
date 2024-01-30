@@ -10,9 +10,15 @@
     color: gold;
 }
 .dialog {
-
+    display: flex;
+    border: 5px solid #edf2f6;
 }
-
+.name {
+    min-width: 200px;
+}
+.message {
+    min-width: 200px;
+}
 .messages {
     padding: 10px;
 }

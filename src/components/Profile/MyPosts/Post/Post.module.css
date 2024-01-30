@@ -1,6 +1,18 @@
 .item {
-    color: black;
+    display: flex;
+    flex-direction: column;
+    color: #888da8;
+    padding: 10px 0;
 }
-.item img {
-    width: 30px;
+
+.description {
+    display: flex;
+    align-items: center;
 }
+.description img {
+    width: 64px;
+    height: 64px;
+    padding: 5px 0;
+}
+
+

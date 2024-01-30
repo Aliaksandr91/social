@@ -10,7 +10,9 @@ export const ProfileInfo: React.FC<any> = ({profile, status, updateStatus}) => {
     }
     return (
         <div className={classes.descriptionBlock}>
-            <img className={classes.photo} src={profile.photos.large ? profile.photos.large : photo} alt=""/>
+            <div className={classes.backGround}>
+                <img className={classes.photo} src={profile.photos.large ? profile.photos.large : photo} alt=""/>
+            </div>
             <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
         </div>
     )

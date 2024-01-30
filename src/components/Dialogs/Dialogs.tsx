@@ -2,20 +2,21 @@ import React, {ChangeEvent} from "react";
 import classes from "./Dialogs.module.css";
 import {DialogItem} from "./DialogItem/DialogsItem";
 import {Message} from "./Message/Message";
-import {DialogType, MessageType} from "../../store/store";
+import { MessageType} from "../../store/store";
 import { Navigate } from "react-router-dom";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Textarea} from "../common/FormControls/FormControls";
 import {maxLengthCreator, requiredField} from "../../utils/validators";
+import {DialogType} from "../../store/dialogs-reducer";
 
 export const Dialogs = (props: any) => {
-    let state = props.dialogsPage
+    let dialogs = props.dialogsPage.dialogs
     const addNewMessage = (values:any)=> {
         props.sendMessage(values.newMessageBody)
     }
 
-    let dialogsElements = state.dialogs.map((el: DialogType) => <DialogItem key={el.id} name={el.name} id={el.id}/>);
-    let messagesElements = state.messages.map((el: MessageType) => <Message key={el.id} message={el.message} id={el.id}/>);
+    let dialogsElements = dialogs.map((el: DialogType) => <DialogItem key={el.id} name={el.name} id={el.id} message={el.message}/>);
+    //let messagesElements = state.messages.map((el: MessageType) => <Message key={el.id} message={el.message} id={el.id}/>);
 
     //if (!props.isAuth) return <Navigate to={'/login'}/>
 
@@ -25,7 +26,7 @@ export const Dialogs = (props: any) => {
                     {dialogsElements}
                 </div>
                 <div className={classes.messages}>
-                    {messagesElements}
+                    {/*{messagesElements}*/}
                 </div>
                 <AddMessageFormRedux onSubmit={addNewMessage}/>
 

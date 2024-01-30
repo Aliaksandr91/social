@@ -5,6 +5,7 @@
     margin-top: 10px;
 }
 .postField {
+    width: 100%;
     resize: none;
     font-family: 'Roboto', sans-serif;
     padding: 10px;
@@ -17,4 +18,8 @@
 
 .postField:focus {
     border-color: #ff5e3a;
+}
+.postControl {
+    display: flex;
+    justify-content: flex-end;
 }
