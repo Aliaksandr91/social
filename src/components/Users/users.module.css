@@ -1,12 +1,16 @@
 .PagesWrapper {
+    justify-content: center;
     display: flex;
     flex-wrap: wrap;
+    font-size: 20px;
 }
 .PagesWrapper > span {
-    padding-right: 2px;
-    padding-left: 2px;
+    margin-right: 2px;
+    margin-left: 2px;
     cursor: pointer;
     transition: 0.2s;
+    display: block;
+
 }
 .PagesWrapper > span:hover {
     color: #ff5e3a;
