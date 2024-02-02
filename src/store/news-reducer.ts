@@ -1,4 +1,4 @@
-import {Dispatch} from "redux";
+import {AppDispatch, AppThunkType} from "./redux-store";
 
 type ArticleType = {
     author: string
@@ -29,7 +29,7 @@ export const setNewsAC = (data: any) => {
     } as const
 }
 
-const newsReducer = (state = initialState, action: ReturnType<typeof setNewsAC>) => {
+export const newsReducer = (state = initialState, action: ReturnType<typeof setNewsAC>) => {
     switch (action.type) {
         case 'news/SET-NEWS':
             return {
@@ -41,9 +41,9 @@ const newsReducer = (state = initialState, action: ReturnType<typeof setNewsAC>)
             return state;
     }
 };
-type ThunkDispatch = Dispatch<ReturnType<typeof setNewsAC>>
-export const fetchNews = () => {
-    return async (dispatch: ThunkDispatch) => {
+
+export const fetchNews = (): AppThunkType => {
+    return async (dispatch: AppDispatch) => {
         const response = await fetch('https://saurav.tech/NewsAPI/top-headlines/category/health/in.json');
         const data = await response.json();
         dispatch(setNewsAC(data));
