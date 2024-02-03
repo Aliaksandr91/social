@@ -4,6 +4,7 @@ import {ArticleType, fetchNews} from "../../store/news-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, AppRootStateType} from "../../store/redux-store";
 import {Loader} from "../common/Loader/Loader";
+import {Article} from "./Article/Article";
 
 export const News = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -17,23 +18,12 @@ export const News = () => {
     } else {
         return (
             <div>
-                {newsData.articles.map((article:any)=>{
+                {newsData.articles.map((article:ArticleType)=>{
                     return (
-                        <div>
-                            <div>{article.author}</div>
-                            <p>{article.content}</p>
-                            <p>{article.description}</p>
-                            <p>{article.publishedAt}</p>
-                            <p>{article.title}</p>
-                            <p>{article.url}</p>
-                            <p><img src={article.urlToImage} alt={article.title}/></p>
-                        </div>
-
+                        <Article article={article}/>
                     )
                 })}
             </div>
         );
     }
-
-
 };
