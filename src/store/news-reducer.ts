@@ -1,6 +1,7 @@
 import {AppDispatch, AppThunkType} from "./redux-store";
+import axios from "axios";
 
-type ArticleType = {
+export type ArticleType = {
     author: string
     content: string
     description: string
@@ -10,15 +11,18 @@ type ArticleType = {
     url: string
     urlToImage: string
 }
+
 type articleStateType = {
-    articles: ArticleType[],
+    articles: ArticleType[]
+    status: string
+    totalResults: number
     loading: boolean
-    error: null | string
 }
 const initialState: articleStateType = {
     articles: [],
-    loading: false,
-    error: null,
+    status: '',
+    totalResults: 0,
+    loading: true
 };
 
 
@@ -35,7 +39,7 @@ export const newsReducer = (state = initialState, action: ReturnType<typeof setN
             return {
                 ...state,
                 loading: false,
-                news: action.payload
+                ...action.payload
             };
         default:
             return state;
@@ -44,8 +48,7 @@ export const newsReducer = (state = initialState, action: ReturnType<typeof setN
 
 export const fetchNews = (): AppThunkType => {
     return async (dispatch: AppDispatch) => {
-        const response = await fetch('https://saurav.tech/NewsAPI/top-headlines/category/health/in.json');
-        const data = await response.json();
-        dispatch(setNewsAC(data));
+        const response = await axios('https://saurav.tech/NewsAPI/top-headlines/category/health/in.json');
+        dispatch(setNewsAC(response.data));
     };
 };
