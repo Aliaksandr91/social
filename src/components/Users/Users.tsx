@@ -4,7 +4,17 @@ import {UserType} from "../../store/users-reducer";
 import userPhoto from "../../assets/images/profile-photo.png";
 import {NavLink} from "react-router-dom";
 
-export const Users = (props: any) => {
+type UsersProps = {
+    totalUsersCount: number;
+    pageSize: number;
+    currentPage: number;
+    onPageChanged: (pageNumber: number) => void;
+    users: UserType[];
+    followingInProgress: number[];
+    unfollow: (userId: number) => void;
+    follow: (userId: number) => void;
+};
+export const Users = (props: UsersProps) => {
 
 
     const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);

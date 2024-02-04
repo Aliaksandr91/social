@@ -15,8 +15,11 @@ import {initializeAppTC} from "./store/app-reducer";
 import {AppRootStateType} from "./store/redux-store";
 import {Loader} from "./components/common/Loader/Loader";
 
-
-class App extends React.Component<any> {
+interface AppProps {
+    initializeAppTC: () => void;
+    initialized: boolean;
+}
+class App extends React.Component<AppProps> {
     componentDidMount() {
         this.props.initializeAppTC()
     }

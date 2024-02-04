@@ -81,13 +81,13 @@ export const unfollowAC = (userId: number) => {
         userId
     } as const
 }
-export const setUsersAC = (users: any) => {
+export const setUsersAC = (users: UserType[]) => {
     return {
         type: 'users/SET-USERS',
         users
     } as const
 }
-export const setCurrentPageAC = (currentPage: any) => {
+export const setCurrentPageAC = (currentPage: number) => {
     return {
         type: 'users/SET-CURRENT-PAGE',
         currentPage

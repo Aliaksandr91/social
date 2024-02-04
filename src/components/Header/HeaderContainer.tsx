@@ -4,7 +4,18 @@ import {connect} from "react-redux";
 import { logoutTC} from "../../store/auth-reducer";
 import {AppRootStateType} from "../../store/redux-store";
 
-class HeaderContainer extends React.Component<any, any> {
+type MapStateToPropsType = {
+    isAuth: boolean;
+    login: string | null;
+};
+
+type MapDispatchToPropsType = {
+    logout: () => void;
+};
+
+type PropsType = MapStateToPropsType & MapDispatchToPropsType;
+
+class HeaderContainer extends React.Component<PropsType> {
 
 
     render() {
@@ -12,7 +23,7 @@ class HeaderContainer extends React.Component<any, any> {
     }
 }
 
-const mapStateToProps = (state: AppRootStateType) => ({
+const mapStateToProps = (state: AppRootStateType):MapStateToPropsType => ({
     isAuth: state.auth.isAuth,
     login: state.auth.login
 })
